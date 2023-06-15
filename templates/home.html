@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% block title %} Задачи {% endblock%}
+    <ul style="margin-top: 100px">
+        <h2>Фильтр по задачам</h2>
+        <li><a href="/True{{ complite.url }}" >Выполненные задачи</a></li>
+        <li><a href="/False{{ complite.url }}" >Невыполненные задачи</a></li>
+    </ul>
+    <div style="margin-top: 100px">
+        <h1>Задачи</h1>
+      {% for todo in list %}
+        <div class="container card mb-3 active" >
+            <p style="color:green;"> {{ todo.title }} </p>
+            <p> {{todo.details}} </p>
+            {% if todo.complite == True %}
+                <p style="color: green">Выполнено</p>
+            {% else %}
+                <p style="color: red">Не выполнено</p>
+            {% endif %}
+            <p> <span style="color:green;">Создана: </span> {{todo.date}}</p>
+            <div class="container">
+                <a class="btn btn-secondary" href="{% url 'update' todo.id%}"> Обновить </a>
+                <a class="btn btn-danger" href="{% url 'delete' todo.id%}"> Удалить </a>
+            </div>
+        </div>
+      {% empty %}
+        <h4>Задач нет</h4>
+      {% endfor %}
+    </div>
+
+    <div class="container">
+      <a class="btn btn-primary" href="{% url 'add'%}"> Добавить новую задачу </a>
+    </div>
+{% endblock %}

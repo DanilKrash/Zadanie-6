@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block content %}
+    {% block title %} Добавить новую задачу{% endblock%}
+
+    <div style="margin-top: 100px" class="container mb-3">
+        <h1>Добавить задачу</h1>
+      <form class="" action="" method="post">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit" name="button">Добавить</button>
+      </form>
+
+    </div>
+{% endblock%}
