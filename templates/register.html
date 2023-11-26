@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Регистрация</h1>
+
+    <form style="margin-top: 100px" method="post">
+        <div class="mb-3">
+            {% csrf_token %}
+            <label class="form-label">{{ form.as_p }}</label>
+            <div class="row-form-errors">{{ form.errors }}</div>
+        </div>
+        <button type="submit">Создать</button>
+    </form>
+{% endblock %}

@@ -12,6 +12,15 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <a href="{% url 'home' %}" class=" navbar-brand"> Все задачи </a>
+                    <div class="navbar navbar-expand-lg navbar-light bg-light">
+                        {% if request.user.is_authenticated %}
+                            <p class="navbar-brand">{{ user.username }}</p> |
+                            <a href="{% url 'logout' %}" class="navbar-brand"> Выйти </a>
+                        {% else %}
+                            <a href="{% url 'register' %}" class="navbar-brand"> Регистрация </a> |
+                            <a href="{% url 'login' %}" class="navbar-brand"> Вход </a>
+                        {% endif %}
+                    </div>
                 </div>
             </nav>
         </header>
